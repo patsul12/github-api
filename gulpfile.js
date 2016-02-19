@@ -59,11 +59,9 @@ gulp.task('jsBower', function() {
 
 gulp.task('cssBower', function() {
   return gulp.src(lib.ext('css').files)
-  .pipe(sourcemaps.init())
-  .pipe(sass())
-  .pipe(sourcemaps.write())
-  .pipe(gulp.dest('./build/css'))
-  .pipe(browserSync.stream());
+    .pipe(concat('vendor.css'))
+    .pipe(gulp.dest('./build/css'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('cssBuild', function() {
@@ -105,7 +103,7 @@ gulp.task('serve', function() {
   gulp.watch(['js/*.js', 'spec/*'], ['jsBuild']);
   gulp.watch(['bower.json'], ['bowerBuild']);
   gulp.watch(['*.html'], ['htmlBuild']);
-  gulp.watch('scss/*.scss', ['cssBuild', 'htmlBuild']);
+  gulp.watch('scss/*.scss', ['cssBuild', 'cssBower','htmlBuild']);
 });
 
 gulp.task('jsBuild', ['jsBrowserify', 'jshint'], function() {
