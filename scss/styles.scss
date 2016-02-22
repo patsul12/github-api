@@ -3,3 +3,16 @@
     color: indianred;
   }
 }
+
+.result {
+  height: 20vh;
+  margin: 0 auto;
+  background-color: #ddd;
+  box-shadow: 3px 3px 5px black;
+  font-size: 1.2em;
+  padding: 10px;
+  &:hover {
+    transform: scale(1.1);
+    background-color: #eee;
+  }
+}
